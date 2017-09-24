@@ -10,8 +10,11 @@ from cms_site.settings import *
 # Application definition
 INSTALLED_APPS = [
     'suncha',
+] + INSTALLED_APPS + [
     #'cms_shop',
-] + INSTALLED_APPS
+    'cmsplugin_iframe2',
+    'aldryn_bootstrap3',
+]
 
 CMS_TEMPLATES = [
     ('full-width.html', _('Full width')),

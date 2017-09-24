@@ -1,4 +1,6 @@
 Django<1.11
+aldryn-bootstrap3
 django-cms-site
 #django-cms-shop
+cmsplugin_iframe2
 social-auth-app-django

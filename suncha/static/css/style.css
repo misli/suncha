@@ -101,9 +101,9 @@ blockquote.pull-right {border-right: 5px solid #999;}
 	.navbar .nav > li > a {padding: 10px 10px 10px;}
 }
 
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
+.navbar .nav > .selected > a,
+.navbar .nav > .selected > a:hover,
+.navbar .nav > .selected > a:focus {
 	color:#FFF; 
 	background-color:#d8450b;
 	-webkit-box-shadow: none;
@@ -112,8 +112,8 @@ blockquote.pull-right {border-right: 5px solid #999;}
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+.navbar .nav li.dropdown.selected > .dropdown-toggle,
+.navbar .nav li.dropdown.open.selected > .dropdown-toggle {
   	color:#FFF; 
 	background-color:#d8450b;
 }
@@ -162,8 +162,8 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
   filter: none;
 }
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+.navbar .nav li.dropdown.selected > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.selected > .dropdown-toggle .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
@@ -655,7 +655,7 @@ a.forrst:hover {background-position: -208px -47px;}
 .no-margin {margin-bottom:0px;}
 
 a.accordion-toggle{background: #f5f5f5;}
-.nav-tabs li.active a{background:#f8f8f8;}
+.nav-tabs li.selected a{background:#f8f8f8;}
 
 @media only screen and  (max-width: 767px) {
 	.btn {margin-bottom: 20px;}
