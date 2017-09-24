@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+
+{% block base_content %}
+
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row"><!-- Container row -->
+
+        <!-- Page Left Sidebar
+        ================================================== --> 
+        <div class="col-sm-3 sidebar page-left-sidebar"><!-- Begin sidebar column -->
+
+            {% block left_sidebar %}{% placeholder 'left_sidebar' %}{% endblock %}
+
+        </div><!-- End sidebar column -->
+
+        <!-- Page Content
+        ================================================== --> 
+        <div class="col-sm-6"><!-- Begin page content column -->
+
+            {% block content %}{% placeholder 'content' %}{% endblock %}
+
+        </div> <!-- End page content column --> 
+
+        <!-- Page Right Sidebar
+        ================================================== --> 
+        <div class="col-sm-3 sidebar page-right-sidebar"><!-- Begin sidebar column -->
+
+            {% block right_sidebar %}{% placeholder 'right_sidebar' %}{% endblock %}
+
+        </div><!-- End sidebar column -->
+
+    </div><!-- End container row -->
+
+{% endblock %}

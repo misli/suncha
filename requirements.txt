@@ -1,0 +1,4 @@
+Django<1.11
+django-cms-site
+#django-cms-shop
+social-auth-app-django

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+
+{% block base_content %}
+
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row"><!-- Container row -->
+
+        <!-- Page Content
+        ================================================== --> 
+        <div class="col-sm-8"><!-- Begin page content column -->
+
+            {% block content %}{% placeholder 'content' %}{% endblock %}
+
+        </div><!-- End page content column --> 
+
+        <!-- Blog Sidebar
+        ================================================== --> 
+        <div class="col-sm-4 sidebar page-sidebar"><!-- Begin sidebar column -->
+
+            {% block right_sidebar %}{% placeholder 'right_sidebar' %}{% endblock %}
+
+        </div><!-- End sidebar column -->
+
+    </div><!-- End container row -->
+
+{% endblock %}
