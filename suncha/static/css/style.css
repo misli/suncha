@@ -178,7 +178,6 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 **************************************/
 .carousel-caption h4 { font-size: 14px; text-shadow:none; }
 .carousel-caption {background: url(../img/post-item-hover.png);}
-.carousel-control {border: none; top: 177px;}
 
 
 /**************************************
