@@ -13,7 +13,6 @@ INSTALLED_APPS = [
 ] + INSTALLED_APPS + [
     #'cms_shop',
     'cmsplugin_iframe2',
-    'aldryn_bootstrap3',
 ]
 
 CMS_TEMPLATES = [

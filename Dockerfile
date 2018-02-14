@@ -1,4 +1,5 @@
-FROM misli/django-cms-site
+ARG CMS_TAG=latest
+FROM misli/django-cms-site:$CMS_TAG
 
 MAINTAINER Jakub Dorňák <jakub.dornak@misli.com>
 
