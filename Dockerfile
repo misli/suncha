@@ -1,7 +1,7 @@
 ARG CMS_TAG=latest
 FROM misli/django-cms-site:$CMS_TAG
 
-MAINTAINER Jakub Dorňák <jakub.dornak@misli.com>
+MAINTAINER Jakub Dorňák <jakub.dornak@misli.cz>
 
 # install other dependencies
 COPY requirements.txt /app/requirements.txt
