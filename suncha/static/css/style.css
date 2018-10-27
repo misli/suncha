@@ -768,3 +768,15 @@ a.accordion-toggle{background: #f5f5f5;}
 @media only screen and  (max-width: 767px) {
 	.the-icons li {float: none; width: 100%; line-height: 25px;}	
 }
+
+.article-preview:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.article-preview a img {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 15px;
+}
