@@ -4,8 +4,12 @@
 *~
 /.ipython
 /data
+/dkim
 /docker-compose.*.yml
 /env
+/faktury/logo
+/faktury/storage
 /htdocs
+/invoiceninjadb
 /media
 /mysql*

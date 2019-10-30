@@ -1,0 +1,3 @@
+#!/bin/bash
+
+letsencrypt certonly --webroot -w /srv/letsencrypt/htdocs -d suncha.cz -d www.suncha.cz -d chat.suncha.cz -d sun-cha.cz -d www.sun-cha.cz

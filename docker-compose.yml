@@ -1,0 +1,109 @@
+version: '3.4'
+services:
+
+  cms:
+    image: misli/suncha
+    build: .
+    depends_on:
+      - memcached
+      - mysql
+      - smtp
+    environment:
+      DATABASE_ENGINE: django.db.backends.mysql
+      DATABASE_HOST: ''
+      DATABASE_NAME: suncha
+      DATABASE_PASSWORD: dbpassword
+      DATABASE_USER: suncha
+      EMAIL_HOST: smtp
+      EMAIL_HOST_PASSWORD: emailpassword
+      EMAIL_HOST_USER: suncha
+      EMAIL_SUBJECT_PREFIX: '[Suncha]'
+      MEMCACHED_LOCATION: memcached:11211
+      SECRET_KEY: secretkey
+      SERVER_EMAIL: '"Suncha" <suncha@suncha.cz>'
+    ports:
+      - 127.0.0.1:9020:80
+    volumes:
+      - ./data:/app/data
+      - ./media:/app/htdocs/media
+      - mysql:/var/run/mysqld
+
+  memcached:
+    image: memcached
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: suncha
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_ROOT_PASSWORD: rootdbpassword
+      MYSQL_USER: suncha
+    volumes:
+      - mysql:/var/run/mysqld
+      - ./mysql:/var/lib/mysql
+
+  smtp:
+    image: catatnight/postfix
+    environment:
+      maildomain: suncha.cz
+      smtp_user: suncha:emailpassword
+    stdin_open: true
+    volumes:
+      - ./dkim:/etc/opendkim/domainkeys
+    tty: true
+    ports:
+      - 127.0.0.1:1025:25/tcp
+
+  faktury:
+    image: nginx
+    ports:
+      - 127.0.0.1:9022:80/tcp
+    volumes:
+      - ./faktury/nginx.conf:/etc/nginx/nginx.conf:ro
+      - invoiceninja:/var/www/app/public:ro
+      - ./faktury/storage:/var/www/app/storage:ro
+      - ./faktury/logo:/var/www/app/public/logo:ro
+
+  invoiceninja:
+    image: invoiceninja/invoiceninja:4.5.14
+    environment:
+      APP_CIPHER: AES-256-CBC
+      APP_DEBUG: '0'
+      APP_ENV: production
+      APP_KEY: appkey
+      APP_LOCALE: cs
+      APP_URL: https://faktury.suncha.cz
+      DB_DATABASE: ninja
+      DB_HOST: invoiceninjadb
+      DB_PASSWORD: dbpassword
+      DB_TYPE: mysql
+      DB_USERNAME: ninja
+      MAIL_DRIVER: smtp
+      MAIL_FROM_ADDRESS: suncha@suncha.cz
+      MAIL_FROM_NAME: InvoiceNinja
+      MAIL_HOST: smtp
+      MAIL_PORT: '25'
+      MAIL_ENCRYPTION: ''
+      MAIL_PASSWORD: emailpassword
+      MAIL_USERNAME: suncha
+    volumes:
+      - invoiceninja:/var/www/app/public
+      - invoiceninjadb:/var/run/mysqld
+      - ./faktury/storage:/var/www/app/storage
+      - ./faktury/logo:/var/www/app/public/logo
+
+  invoiceninjadb:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: ninja
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_ROOT_PASSWORD: rootdbpassword
+      MYSQL_USER: ninja
+    volumes:
+      - invoiceninjadb:/var/run/mysqld
+      - ./invoiceninjadb:/var/lib/mysql
+
+volumes:
+  mysql:
+  invoiceninja:
+  invoiceninjadb:

@@ -1,0 +1,1 @@
+letsencrypt certonly --webroot -w /data/letsencrypt/htdocs -d faktury.suncha.cz
