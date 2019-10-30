@@ -1,5 +1,5 @@
-ARG CMS_TAG=latest
-FROM misli/django-cms-site:$CMS_TAG
+ARG LEPRIKON_TAG=latest
+FROM leprikon/leprikon:$LEPRIKON_TAG
 
 LABEL name="Sun Cha"
 LABEL maintainer="Jakub Dorňák <jakub.dornak@misli.cz>"
@@ -14,4 +14,4 @@ COPY suncha /app/suncha
 ENV SITE_MODULE=suncha
 
 # run this command at the end of any dockerfile based on this one
-RUN django-cms collectstatic --no-input
+RUN leprikon collectstatic --no-input

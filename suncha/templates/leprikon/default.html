@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load cms_tags leprikon_tags menu_tags staticfiles %}
+
+{% block base_content %}
+
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row"><!-- Container row -->
+
+        <!-- Page Content
+        ================================================== --> 
+        <div class="col-sm-9"><!-- Begin page content column -->
+
+            {% block content %}{% placeholder 'content' %}{% endblock %}
+
+        </div><!-- End page content column --> 
+
+        <!-- Blog Sidebar
+        ================================================== --> 
+        <div class="col-sm-3 sidebar page-sidebar"><!-- Begin sidebar column -->
+
+            <div class="row no-margin">
+                <div class="col-sm-6">
+                    <h4 class="header">Uživatel</h4>
+                    {% include 'leprikon/user_dropdown.html' %}
+                </div>
+                <div class="col-sm-6 text-right">
+                    <h4 class="header">Školní rok</h4>
+                    {% school_year_form %}
+                </div>
+            </div>
+            <div class="navigation">
+                <ul class="navbar nav nav-stacked">
+                    {% show_menu 1 100 0 100 'menu/menu.html' 'CMSMenu,LeprikonMenu' %}
+                </ul>
+            </div>
+
+        </div><!-- End sidebar column -->
+
+    </div><!-- End container row -->
+
+{% endblock %}

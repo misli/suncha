@@ -1,4 +1,3 @@
-django-cms-site
-#django-cms-shop
+aldryn-bootstrap3
 cmsplugin_iframe2
-social-auth-app-django
+django-cms-articles

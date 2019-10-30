@@ -5,13 +5,14 @@ Django settings for suncha project.
 """
 
 from django.utils.translation import ugettext_lazy as _
-from cms_site.settings import *
+from leprikon.site.settings import *
 
 # Application definition
 INSTALLED_APPS = [
     'suncha',
+    'cms_articles',
 ] + INSTALLED_APPS + [
-    #'cms_shop',
+    'aldryn_bootstrap3',
     'cmsplugin_iframe2',
 ]
 
