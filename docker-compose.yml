@@ -1,7 +1,7 @@
 version: '3.4'
 services:
 
-  cms:
+  leprikon:
     image: misli/suncha
     build: .
     depends_on:
