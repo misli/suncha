@@ -10,8 +10,8 @@ from leprikon.site.settings import *
 # Application definition
 INSTALLED_APPS = [
     'suncha',
-    'cms_articles',
 ] + INSTALLED_APPS + [
+    'cms_articles',
     'aldryn_bootstrap3',
     'cmsplugin_iframe2',
 ]

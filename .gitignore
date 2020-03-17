@@ -2,14 +2,14 @@
 *.pyo
 *.swp
 *~
-/.ipython
 /data
 /dkim
 /docker-compose.*.yml
 /env
 /faktury/logo
 /faktury/storage
-/htdocs
 /invoiceninjadb
 /media
+/mongo*
 /mysql*
+/uploads

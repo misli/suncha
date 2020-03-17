@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cms_tags leprikon_tags menu_tags staticfiles %}
+{% load cms_tags leprikon_tags menu_tags rocketchat staticfiles %}
 
 {% block base_content %}
 
@@ -22,11 +22,22 @@
             <div class="row no-margin">
                 <div class="col-sm-6">
                     <h4 class="header">Uživatel</h4>
-                    {% include 'leprikon/user_dropdown.html' %}
                 </div>
                 <div class="col-sm-6 text-right">
                     <h4 class="header">Školní rok</h4>
-                    {% school_year_form %}
+                </div>
+            </div>
+            <div style="display: table; width: 100%; margin-bottom: 15px;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell">
+                        {% include 'leprikon/user_dropdown.html' %}
+                    </div>
+                    <div style="display: table-cell; vertical-align: bottom;">
+                        {% chat %}
+                    </div>
+                    <div style="display: table-cell; text-align: right;">
+                        {% school_year_form %}
+                    </div>
                 </div>
             </div>
             <div class="navigation">

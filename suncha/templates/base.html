@@ -1,4 +1,4 @@
-{% load cms_tags menu_tags sekizai_tags staticfiles ganalytics %}
+{% load cms_tags menu_tags rocketchat sekizai_tags staticfiles ganalytics %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="cs">
     <head>
@@ -9,8 +9,10 @@
 
         <!-- CSS
         ================================================== -->
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/layout.css' %}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/chat.css' %}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style.css' %}">
 
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,6 +23,7 @@
 
         <!-- JS
         ================================================== -->
+        <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
     </head>
 
     <body>
@@ -99,22 +102,12 @@
         <!-- Scroll to Top -->  
         <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
         
-        <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
         <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
 
         {% render_block 'js' %}
 
-        <!-- Start of Rocket.Chat Livechat Script -->
-        <script type="text/javascript">
-        (function(w, d, s, u) {
-            w.RocketChat = function(c) { w.RocketChat._.push(c) }; w.RocketChat._ = []; w.RocketChat.url = u;
-            var h = d.getElementsByTagName(s)[0], j = d.createElement(s);
-            j.async = true; j.src = 'https://chat.suncha.cz/packages/rocketchat_livechat/assets/rocket-livechat.js';
-            h.parentNode.insertBefore(j, h);
-        })(window, document, 'script', 'https://chat.suncha.cz/livechat');
-        </script>
-        <!-- End of Rocket.Chat Livechat Script -->
+        {% livechat %}
     </body>
 </html>
