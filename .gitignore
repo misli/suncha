@@ -5,11 +5,11 @@
 /data
 /dkim
 /docker-compose.*.yml
+/env
 /faktury/logo
 /faktury/storage
 /invoiceninjadb
 /media
-/mongo*
 /mysql*
 /redis*
 /uploads

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cms_tags leprikon_tags menu_tags rocketchat staticfiles %}
+{% load cms_tags leprikon_tags menu_tags staticfiles %}
 
 {% block base_content %}
 
@@ -31,9 +31,6 @@
                 <div style="display: table-row;">
                     <div style="display: table-cell">
                         {% include 'leprikon/user_dropdown.html' %}
-                    </div>
-                    <div style="display: table-cell; vertical-align: bottom;">
-                        {% chat %}
                     </div>
                     <div style="display: table-cell; text-align: right;">
                         {% school_year_form %}
