@@ -1,32 +1,40 @@
 version: '3.4'
+
+x-leprikon: &leprikon
+  image: misli/suncha
+  depends_on:
+    - mysql
+    - redis
+    - smtprelay
+  environment:
+    DATABASE_ENGINE: django.db.backends.mysql
+    DATABASE_HOST: ''
+    DATABASE_NAME: suncha
+    DATABASE_USER: suncha
+    DATABASE_PASSWORD: dbpassword
+    EMAIL_HOST: smtprelay
+    EMAIL_SUBJECT_PREFIX: '[Suncha]'
+    CACHE_LOCATION: unix:///var/run/redis/redis.sock
+    SECRET_KEY: secretkey
+    SENTRY_ENVIRONMENT: 'suncha'
+    SERVER_EMAIL: '"Suncha" <suncha@suncha.cz>'
+    SUPERVISORD_RUN: "gunicorn cron"
+  volumes:
+    - ./data:/app/data
+    - ./media:/app/htdocs/media
+    - ./static:/app/htdocs/static
+    - ./run:/app/run
+    - mysql:/var/run/mysqld
+    - redis:/var/run/redis
+
 services:
 
   leprikon:
-    image: misli/suncha
+    <<: *leprikon
     build: .
-    depends_on:
-      - mysql
-      - redis
-      - smtprelay
-    environment:
-      DATABASE_ENGINE: django.db.backends.mysql
-      DATABASE_HOST: ''
-      DATABASE_NAME: suncha
-      DATABASE_USER: suncha
-      DATABASE_PASSWORD: dbpassword
-      EMAIL_HOST: smtprelay
-      EMAIL_SUBJECT_PREFIX: '[Suncha]'
-      CACHE_LOCATION: unix:///var/run/redis/redis.sock
-      SECRET_KEY: secretkey
-      SENTRY_ENVIRONMENT: 'suncha'
-      SERVER_EMAIL: '"Suncha" <suncha@suncha.cz>'
-    ports:
-      - 127.0.0.1:9020:80
-    volumes:
-      - ./data:/app/data
-      - ./media:/app/htdocs/media
-      - mysql:/var/run/mysqld
-      - redis:/var/run/redis
+  leprikon-collectstatic:
+    <<: *leprikon
+    command: leprikon collectstatic --no-input
 
   redis:
     image: redis

@@ -8,8 +8,10 @@
 /env
 /faktury/logo
 /faktury/storage
-/invoiceninjadb
+/invoiceninjadb*
 /media
 /mysql*
 /redis*
+/run
+/static
 /uploads
